@@ -68,7 +68,7 @@ const getUser = async (req, res) => {
         // if token exist in db then first logout
         // if token does not exist then set token to db
 
-        const expiryDateTime = Math.floor(new Date().getTime() / 1000) + 1000;
+        const expiryDateTime = Math.floor(new Date().getTime() / 1000) + 100000;
         const payload = {
           _id: user._id,
           fullName: user.fullName,
@@ -192,11 +192,6 @@ const followOther = async (req, res) => {
 };
 
 
-
-
-
-
-
 // unfollow other
 
 const unfollowOther = async (req, res)=>{
@@ -251,17 +246,6 @@ const unfollowOther = async (req, res)=>{
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // logout
 

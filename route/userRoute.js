@@ -10,14 +10,32 @@ router.get("/login", userController.getUser);
 // get other user with userName with details -> (userName, description,following, followers, profilePhoto, threads, replies, reposts, otherLinks)
 router.get("/search/:userName", authMiddleware, userController.getOtherUser);
 
-
 // add userName to following (here we will push userName)
 // push other's userName to own field following and push own userName to followers of other user
-router.post("/follow/:userName",authMiddleware,userController.followOther)
+router.post("/follow/:userName", authMiddleware, userController.followOther);
 
 // remove userName from following (here we will pull userName)
-router.post("/unfollow/:userName", authMiddleware,userController.unfollowOther);
+router.post(
+  "/unfollow/:userName",
+  authMiddleware,
+  userController.unfollowOther
+);
 // logout
 router.post("/logout", authMiddleware, userController.logout);
 
 module.exports = router;
+
+/*
+register, login, logout --> done
+followers, following  --> done
+
+
+profile updation --> (fullName, profileDescription, profilePhoto, phoneNumber) --> done
+privateAccount --> done 
+
+
+threads/post management -->   post thread (description, image, gif, #, poll, replies, myId) -- done
+replies management --> post thread (description, image, gif, #, poll, replies, myId) -->
+reposts management --> if I posted then it will shown to my account (threads id, myId)
+
+*/
