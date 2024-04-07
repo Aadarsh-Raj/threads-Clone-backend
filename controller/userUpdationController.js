@@ -45,7 +45,7 @@ const updateProfile = async (req, res)=>{
 
     }
 
-    if(!req.body.fullName && !req.body.profileDescription && !req.body.profilePhoto && !req.body.phoneNumber){
+    if(!req.body.fullName && !req.body.profileDescription && !req.body.profilePhoto && !req.body.phoneNumber && !req.body.otherLinks){
         return res.json({
             success:false,
             message: "Not allowed to edit other fields"
@@ -63,6 +63,9 @@ const updateProfile = async (req, res)=>{
     }
     if (req.body.phoneNumber) {
         updateFields.phoneNumber = req.body.phoneNumber;
+    }
+    if(req.body.otherLinks){
+        updateFields.otherLinks = req.body.otherLinks;
     }
 
     await UserModel.findByIdAndUpdate(req.user._id, updateFields);

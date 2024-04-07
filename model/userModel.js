@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema(
     replies: {},
     reposts: {},
     otherLinks: {
-      type: [],
+      type: String,
       require: false,
     },
     privateAccount: {

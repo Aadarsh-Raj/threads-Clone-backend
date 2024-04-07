@@ -175,47 +175,47 @@ const deleteThreads = async (req, res) => {
 };
 
 // reply to the threads
-const repliesForThreads = async (req, res) => {
-  try {
-    const user = await UserModel.findById(req.user._id);
-    if (!user) {
-      return res.json({
-        success: false,
-        message: "User not found",
-      });
-    }
-    const threads = await ThreadModel.findById(req.params.threadsId);
-    if (!threads) {
-      return res.json({
-        success: false,
-        message: "Post not found",
-      });
-    }
+// const repliesForThreads = async (req, res) => {
+//   try {
+//     const user = await UserModel.findById(req.user._id);
+//     if (!user) {
+//       return res.json({
+//         success: false,
+//         message: "User not found",
+//       });
+//     }
+//     const threads = await ThreadModel.findById(req.params.threadsId);
+//     if (!threads) {
+//       return res.json({
+//         success: false,
+//         message: "Post not found",
+//       });
+//     }
 
-    if (!req.body.replies) {
-      return res.json({
-        success: false,
-        message: "Other fields cannot be change",
-      });
-    }
-    const reply = {};
-    reply.description = req.body.replies.description;
-    reply.image = req.body.replies.image;
-    reply.gif = req.body.replies.git;
-    reply.userName = user.userName;
+//     if (!req.body.replies) {
+//       return res.json({
+//         success: false,
+//         message: "Other fields cannot be change",
+//       });
+//     }
+//     const reply = {};
+//     reply.description = req.body.replies.description;
+//     reply.image = req.body.replies.image;
+//     reply.gif = req.body.replies.git;
+//     reply.userName = user.userName;
 
-    await ThreadModel.findByIdAndUpdate(req.params.threadsId, reply);
-    res.json({
-      success: true,
-      message: "Reply sent successfully",
-    });
-  } catch (error) {
-    res.json({
-      success: false,
-      message: "Server crashed",
-    });
-  }
-};
+//     await ThreadModel.findByIdAndUpdate(req.params.threadsId, reply);
+//     res.json({
+//       success: true,
+//       message: "Reply sent successfully",
+//     });
+//   } catch (error) {
+//     res.json({
+//       success: false,
+//       message: "Server crashed",
+//     });
+//   }
+// };
 module.exports = {
   createThreads,
   getThreadsWithId,

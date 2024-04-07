@@ -18,7 +18,7 @@ router.put("/update/:threadsId",threadsController.updateThreads);
 router.delete("/delete/threadsId", threadsController.deleteThreads);
 // replies for thread
 
-router.post("/replies/:threadsId", threadsController.repliesForThreads);
+// router.post("/replies/:threadsId", threadsController.repliesForThreads);
 
 
 module.exports = router;
